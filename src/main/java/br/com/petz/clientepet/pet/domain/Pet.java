@@ -24,9 +24,12 @@ public class Pet {
     @Enumerated(EnumType.STRING)
     private Porte porte;
     private String microchip;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoPet tipo;
+    @NotBlank
     private String raca;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private SexoPet sexo;
     private String pelagemCor;
