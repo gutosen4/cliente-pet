@@ -33,6 +33,7 @@ public class Cliente {
     @NotBlank
     private String celular;
     private String telefone;
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @NotNull
     private LocalDate dataNascimento;
@@ -44,9 +45,6 @@ public class Cliente {
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
-
-
-
 
     public Cliente(ClienteRequest clienteRequest) {
         this.nomeCompleto = clienteRequest.getNomeCompleto();
