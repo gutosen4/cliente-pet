@@ -22,7 +22,11 @@ public class ClienteInfraRepository implements ClienteRepository {
     @Override
     public Cliente salva(Cliente cliente) {
         log.info("[inicia] ClienteInfraRepository - salva");
-        clienteSpringDataJPARepository.save(cliente);
+        try {
+            clienteSpringDataJPARepository.save(cliente);
+        } catch (Exception e) {
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Cliente já existe no banco de dados!");
+        }
         log.info("[finaliza] ClienteInfraRepository - salva");
         return cliente;
     }
