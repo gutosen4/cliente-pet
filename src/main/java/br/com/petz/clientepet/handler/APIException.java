@@ -10,13 +10,11 @@ import java.util.Optional;
 @Getter
 @Log4j2
 public class APIException extends RuntimeException {
-
     private HttpStatus statusException;
     private ErrorApiResponse bodyException;
 
     private APIException(HttpStatus statusException, String message, Exception e) {
         super(message, e);
-        e.getCause();
         this.statusException = statusException;
         this.bodyException = ErrorApiResponse.builder()
                 .message(message)
@@ -30,7 +28,7 @@ public class APIException extends RuntimeException {
 
     public static APIException build(HttpStatus statusException, String message, Exception e) {
         log.error("Exception: ", e);
-        return new APIException(statusException, message, null);
+        return new APIException(statusException, message, e);
     }
 
     private String getDescription(Exception e) {
@@ -41,6 +39,8 @@ public class APIException extends RuntimeException {
     private static String getMessageCause(Exception e) {
         return e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
     }
+
+
 
     public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity() {
         return ResponseEntity
