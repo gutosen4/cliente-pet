@@ -1,7 +1,6 @@
 package br.com.petz.clientepet.pet.infra;
 
-import br.com.petz.clientepet.cliente.infra.ClienteSpringDataJPARepository;
-import br.com.petz.clientepet.pet.application.service.PetRepository;
+import br.com.petz.clientepet.pet.application.repository.PetRepository;
 import br.com.petz.clientepet.pet.domain.Pet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
